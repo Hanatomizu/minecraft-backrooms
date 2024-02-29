@@ -24,7 +24,6 @@ dependencies {
 
     // Fabric API. This is technically optional, but you probably want it anyway.
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    implementation "org.jetbrains.kotlin:kotlin-stdlib"
     modImplementation("net.fabricmc:fabric-language-kotlin:1.10.18+kotlin.1.9.22")
 }
 
