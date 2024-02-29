@@ -14,12 +14,11 @@
 * limitations under the License.
 */
 
-package moe.hanatomizu.minecraftbackrooms.MinecraftBackrooms
+package moe.hanatomizu.minecraftbackrooms
 
 import net.fabricmc.api.ModInitializer
 
 class MinecraftBackrooms : ModInitializer {
-
 
     override fun onInitialize (){
 
