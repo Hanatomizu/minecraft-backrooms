@@ -17,10 +17,22 @@
 package moe.hanatomizu.minecraftbackrooms
 
 import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
+import net.minecraft.block.Block
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.util.Identifier
 
 class MinecraftBackrooms : ModInitializer {
 
+    val NAMESPACE = "backrooms"
+    // Add blocks
+    val ENTRANCE_FLOOR = Block(FabricBlockSettings.create())
+
     override fun onInitialize (){
+
+        // Register blocks
+        Registry.register(Registries.BLOCK, Identifier(NAMESPACE, "entrance_floor"), ENTRANCE_FLOOR)
 
     }
 }
