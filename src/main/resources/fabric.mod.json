@@ -17,13 +17,13 @@
 		"main": [
 			{
 				"adapter": "kotlin",
-				"value": "com.hanatomizu.minecraftbackrooms.MinecraftBackrooms"
+				"value": "moe.hanatomizu.minecraftbackrooms.MinecraftBackrooms"
 			}
 		],
 		"client": [
 			{
 				"adapter": "kotlin",
-				"value": "moe.hanatomizu.minecraftbackrooms.client.Minecraft_backroomsClient"
+				"value": "moe.hanatomizu.minecraftbackrooms.client.MinecraftBackroomsClient"
 			}
 		]
 	},
