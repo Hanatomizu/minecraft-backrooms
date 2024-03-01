@@ -16,5 +16,11 @@
 
 package moe.hanatomizu.minecraftbackrooms.client
 
-class MinecraftBackroomsClient {
+import net.fabricmc.api.ClientModInitializer
+
+class MinecraftBackroomsClient : ClientModInitializer {
+    override fun onInitializeClient() {
+        
+    }
+
 }
