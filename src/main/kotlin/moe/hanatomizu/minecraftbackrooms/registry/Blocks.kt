@@ -23,7 +23,7 @@ import net.minecraft.util.Identifier
 
 object Blocks {
 
-    private val NAMESPACE = "backrooms"
+    private const val NAMESPACE = "backrooms"
     private fun register(blockPath: String, block: net.minecraft.block.Block): Unit {
         Registry.register(Registries.BLOCK, Identifier(NAMESPACE, blockPath), block)
     }
