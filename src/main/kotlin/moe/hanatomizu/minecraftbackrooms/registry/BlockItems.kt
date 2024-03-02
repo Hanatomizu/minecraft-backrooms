@@ -21,7 +21,7 @@ import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 
 object BlockItems {
-    private val NAMESPACE = "backrooms"
+    private const val NAMESPACE = "backrooms"
     private fun register(itemPath: String, item: net.minecraft.item.Item): Unit{
         Registry.register(Registries.ITEM, Identifier(NAMESPACE, itemPath), item)
     }

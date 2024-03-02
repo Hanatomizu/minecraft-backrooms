@@ -1,3 +1,4 @@
+
 /*
 * Copyright 2024 Hanatomizu
 *
@@ -13,21 +14,15 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+package moe.hanatomizu.minecraftbackrooms.objects
 
-package moe.hanatomizu.minecraftbackrooms
+import net.minecraft.item.ItemGroup
+import net.minecraft.registry.RegistryKey
+import net.minecraft.registry.RegistryKeys
+import net.minecraft.util.Identifier
 
-import net.fabricmc.api.ModInitializer
-
-class MinecraftBackrooms : ModInitializer {
-
+object ModGroups {
     private val NAMESPACE = "backrooms"
 
-    override fun onInitialize (){
-        // Register Item Groups
-        moe.hanatomizu.minecraftbackrooms.registry.Groups.init()
-
-        // Register blocks and block items
-        moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
-        moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
-    }
+    val ENTRANCE_BLOCKS: RegistryKey<ItemGroup> = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier(NAMESPACE, "entrance_blocks"))
 }
