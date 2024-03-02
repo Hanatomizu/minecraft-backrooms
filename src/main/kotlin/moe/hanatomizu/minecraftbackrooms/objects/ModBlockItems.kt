@@ -14,13 +14,12 @@
 * limitations under the License.
 */
 
-package moe.hanatomizu.minecraftbackrooms.client
+package moe.hanatomizu.minecraftbackrooms.objects
 
-import net.fabricmc.api.ClientModInitializer
+import net.fabricmc.fabric.api.item.v1.FabricItemSettings
+import net.minecraft.item.BlockItem
 
-class MinecraftBackroomsClient : ClientModInitializer {
-    override fun onInitializeClient() {
-        
-    }
-
+object ModBlockItems {
+    val ENTRANCE_FLOOR_ITEM: BlockItem = BlockItem(ModBlocks.ENTRANCE_FLOOR, FabricItemSettings())
+    val ENTRANCE_WALL_ITEM: BlockItem = BlockItem(ModBlocks.ENTRANCE_WALL, FabricItemSettings())
 }

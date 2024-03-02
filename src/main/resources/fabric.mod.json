@@ -11,9 +11,15 @@
 		"repo": "https://github.com/hanatomizu/minecraft-backrooms"
 	},
 	"license": "Apache-2.0",
-	"icon": "assets/minecraft-backrooms/icon.png",
+	"icon": "assets/backrooms/icon.png",
 	"environment": "*",
 	"entrypoints": {
+		"fabric-datagen": [
+			{
+				"adapter": "kotlin",
+				"value": "moe.hanatomizu.minecraftbackrooms.DataGenerators.DataGenerator"
+			}
+		],
 		"main": [
 			{
 				"adapter": "kotlin",
