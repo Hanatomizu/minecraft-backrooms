@@ -14,19 +14,12 @@
 * limitations under the License.
 */
 
-package moe.hanatomizu.minecraftbackrooms
+package moe.hanatomizu.minecraftbackrooms.objects
 
-import net.fabricmc.api.ModInitializer
+import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
+import net.minecraft.block.Block
 
-class MinecraftBackrooms : ModInitializer {
-
-    private val NAMESPACE = "backrooms"
-    // Add blocks
-
-    override fun onInitialize (){
-
-        // Register blocks and block items
-        moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
-        moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
-    }
+object ModBlocks {
+    val ENTRANCE_FLOOR: Block = Block(FabricBlockSettings.create())
+    val ENTRANCE_WALL: Block = Block(FabricBlockSettings.create())
 }

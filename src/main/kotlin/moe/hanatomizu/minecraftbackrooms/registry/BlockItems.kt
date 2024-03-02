@@ -13,20 +13,20 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+package moe.hanatomizu.minecraftbackrooms.registry
 
-package moe.hanatomizu.minecraftbackrooms
+import moe.hanatomizu.minecraftbackrooms.objects.ModBlockItems
+import net.minecraft.registry.Registries
+import net.minecraft.registry.Registry
+import net.minecraft.util.Identifier
 
-import net.fabricmc.api.ModInitializer
-
-class MinecraftBackrooms : ModInitializer {
-
+object BlockItems {
     private val NAMESPACE = "backrooms"
-    // Add blocks
-
-    override fun onInitialize (){
-
-        // Register blocks and block items
-        moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
-        moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
+    private fun register(itemPath: String, item: net.minecraft.item.Item): Unit{
+        Registry.register(Registries.ITEM, Identifier(NAMESPACE, itemPath), item)
+    }
+    fun init(): Unit{
+        register("entrance_floor", ModBlockItems.ENTRANCE_FLOOR_ITEM)
+        register("entrance_wall", ModBlockItems.ENTRANCE_WALL_ITEM)
     }
 }
