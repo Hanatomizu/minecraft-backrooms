@@ -13,18 +13,18 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
-
 package moe.hanatomizu.minecraftbackrooms.DataGenerators
 
+import moe.hanatomizu.minecraftbackrooms.DataGenerators.providers.ModelGenerator
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 
 class DataGenerator : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(fabricDataGenerator: FabricDataGenerator) {
-        val pack : FabricDataGenerator.Pack = fabricDataGenerator.createPack()
+        val pack: FabricDataGenerator.Pack = fabricDataGenerator.createPack()
 
-        // Providers
-
+        // Add provider
+        pack.addProvider { output: FabricDataOutput? -> ModelGenerator(output) }
     }
-
 }
