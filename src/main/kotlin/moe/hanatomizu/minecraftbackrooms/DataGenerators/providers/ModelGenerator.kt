@@ -16,7 +16,9 @@
 package moe.hanatomizu.minecraftbackrooms.DataGenerators.providers
 
 import moe.hanatomizu.minecraftbackrooms.objects.ModBlockItems.ENTRANCE_FLOOR_ITEM
+import moe.hanatomizu.minecraftbackrooms.objects.ModBlockItems.ENTRANCE_WALL_ITEM
 import moe.hanatomizu.minecraftbackrooms.objects.ModBlocks.ENTRANCE_FLOOR
+import moe.hanatomizu.minecraftbackrooms.objects.ModBlocks.ENTRANCE_WALL
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider
 import net.minecraft.data.client.BlockStateModelGenerator
@@ -25,10 +27,11 @@ import net.minecraft.data.client.Models
 
 class ModelGenerator(output: FabricDataOutput?) : FabricModelProvider(output) {
     override fun generateBlockStateModels(blockStateModelGenerator: BlockStateModelGenerator) {
-        blockStateModelGenerator.registerCubeAllModelTexturePool(ENTRANCE_FLOOR)
+        blockStateModelGenerator.registerSimpleCubeAll(ENTRANCE_FLOOR)
+        blockStateModelGenerator.registerSimpleCubeAll(ENTRANCE_WALL)
     }
 
     override fun generateItemModels(itemModelGenerator: ItemModelGenerator) {
-        itemModelGenerator.register(ENTRANCE_FLOOR_ITEM, Models.GENERATED)
+
     }
 }
