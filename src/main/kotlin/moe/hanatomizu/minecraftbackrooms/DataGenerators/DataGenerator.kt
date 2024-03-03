@@ -16,6 +16,7 @@
 package moe.hanatomizu.minecraftbackrooms.DataGenerators
 
 import moe.hanatomizu.minecraftbackrooms.DataGenerators.providers.ModelGenerator
+import moe.hanatomizu.minecraftbackrooms.DataGenerators.providers.languages.en_us
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
@@ -25,6 +26,9 @@ class DataGenerator : DataGeneratorEntrypoint {
         val pack: FabricDataGenerator.Pack = fabricDataGenerator.createPack()
 
         // Add provider
+        // Models
         pack.addProvider { output: FabricDataOutput? -> ModelGenerator(output) }
+        // English Language provider
+        pack.addProvider { output: FabricDataOutput? -> en_us(output) }
     }
 }
