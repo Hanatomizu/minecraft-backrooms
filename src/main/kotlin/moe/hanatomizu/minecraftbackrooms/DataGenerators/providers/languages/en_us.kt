@@ -9,7 +9,7 @@ class en_us(dataGenerator: FabricDataOutput?) : FabricLanguageProvider(dataGener
         translationBuilder.add(ModBlockItems.ENTRANCE_WALL_ITEM, "Entrance Wall")
         translationBuilder.add(ModBlockItems.ENTRANCE_FLOOR_ITEM, "Entrance Wall")
 
-        translationBuilder.add("itemGroup.backrooms.entrance_blocks", "Backrooms - Entrance Blocks")
+        translationBuilder.add("itemGroup.backrooms.entrance_block", "Backrooms - Entrance Blocks")
     }
 
 }
