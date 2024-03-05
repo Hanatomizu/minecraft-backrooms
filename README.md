@@ -6,6 +6,12 @@ This is backrooms in Minecraft
 
 # Build
 
+Dependencies:
+
+- Java Development Kit 17
+
+<br>
+
 **macOS/Linux**
 
 ```sh
