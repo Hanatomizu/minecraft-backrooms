@@ -29,7 +29,6 @@ class MinecraftBackrooms : ModInitializer {
         LOGGER.info("Start loading minecraft-backrooms!")
         // Register Item Groups
         moe.hanatomizu.minecraftbackrooms.registry.Groups.init()
-
         // Register blocks and block items
         moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
         moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
