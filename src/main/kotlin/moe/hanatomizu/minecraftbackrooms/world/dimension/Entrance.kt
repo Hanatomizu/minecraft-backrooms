@@ -27,13 +27,17 @@ import net.minecraft.util.Identifier
 import net.minecraft.world.World
 import net.minecraft.world.dimension.DimensionOptions
 
-object entrance {
+object Entrance {
     private val ENTRANCE_DIMENSION_KEY: RegistryKey<DimensionOptions> = RegistryKey.of(RegistryKeys.DIMENSION, Identifier(NAMESPACE, "entrance"))
     private val FAILED_EXCEPTION: SimpleCommandExceptionType = SimpleCommandExceptionType(Text.literal("Teleportation Failed"))
 
-    private val ENTRANCE_WORLD_KEY: RegistryKey<World> = RegistryKey.of(RegistryKeys.WORLD, ENTRANCE_DIMENSION_KEY.value)
+    private var ENTRANCE_WORLD_KEY: RegistryKey<World> = RegistryKey.of(RegistryKeys.WORLD, ENTRANCE_DIMENSION_KEY.value)
 
     fun init(): Unit {
         Registry.register(Registries.CHUNK_GENERATOR, Identifier(NAMESPACE, "entrance"), EntranceChunkGenerator.CODEC)
+
+        ENTRANCE_WORLD_KEY = RegistryKey.of(RegistryKeys.WORLD, Identifier(NAMESPACE, "entrance"))
+
+
     }
 }
