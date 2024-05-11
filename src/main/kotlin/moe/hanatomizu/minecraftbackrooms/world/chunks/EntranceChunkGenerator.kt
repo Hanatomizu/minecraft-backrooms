@@ -94,11 +94,11 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
     }
 
     override fun getSeaLevel(): Int {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override fun getMinimumY(): Int {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override fun getHeight(
