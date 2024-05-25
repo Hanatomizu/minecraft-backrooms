@@ -33,7 +33,7 @@ class MinecraftBackrooms : ModInitializer {
         moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
         moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
         // Register Dimensions
-        // TODO("Implement dimensions")
+        moe.hanatomizu.minecraftbackrooms.world.Dimensions.init()
     }
 }
 
