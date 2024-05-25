@@ -19,6 +19,7 @@ import com.mojang.datafixers.kinds.App
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
 import net.fabricmc.fabric.impl.biome.TheEndBiomeData.biomeRegistry
+import net.minecraft.block.BlockState
 import net.minecraft.registry.RegistryEntryLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.RegistryOps
@@ -63,7 +64,7 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
         chunk: Chunk?,
         carverStep: GenerationStep.Carver?
     ) {
-        TODO("Not yet implemented")
+        // No cave
     }
 
     override fun buildSurface(
@@ -72,15 +73,15 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
         noiseConfig: NoiseConfig?,
         chunk: Chunk?
     ) {
-        TODO("Not yet implemented")
+
     }
 
     override fun populateEntities(region: ChunkRegion?) {
-        TODO("Not yet implemented")
+
     }
 
     override fun getWorldHeight(): Int {
-        TODO("Not yet implemented")
+        return 64
     }
 
     override fun populateNoise(
@@ -90,7 +91,7 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
         structureAccessor: StructureAccessor?,
         chunk: Chunk?
     ): CompletableFuture<Chunk> {
-        TODO("Not yet implemented")
+        return CompletableFuture.completedFuture(chunk)
     }
 
     override fun getSeaLevel(): Int {
@@ -108,7 +109,7 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
         world: HeightLimitView?,
         noiseConfig: NoiseConfig?
     ): Int {
-        TODO("Not yet implemented")
+        return 0
     }
 
     override fun getColumnSample(
@@ -117,11 +118,11 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
         world: HeightLimitView?,
         noiseConfig: NoiseConfig?
     ): VerticalBlockSample {
-        TODO("Not yet implemented")
+        return VerticalBlockSample(0, emptyArray())
     }
 
     override fun getDebugHudText(text: MutableList<String>?, noiseConfig: NoiseConfig?, pos: BlockPos?) {
-        TODO("Not yet implemented")
+
     }
 
 }
