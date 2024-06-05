@@ -20,6 +20,8 @@ import moe.hanatomizu.minecraftbackrooms.DataGenerators.providers.languages.en_u
 import net.fabricmc.fabric.api.datagen.v1.DataGeneratorEntrypoint
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator
 import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput
+import net.minecraft.registry.RegistryWrapper
+import java.util.concurrent.CompletableFuture
 
 class DataGenerator : DataGeneratorEntrypoint {
     override fun onInitializeDataGenerator(fabricDataGenerator: FabricDataGenerator) {
@@ -29,6 +31,9 @@ class DataGenerator : DataGeneratorEntrypoint {
         // Models
         pack.addProvider { output: FabricDataOutput? -> ModelGenerator(output) }
         // English Language provider
-        pack.addProvider { output: FabricDataOutput? -> en_us(output) }
+        pack.addProvider {
+            output: FabricDataOutput?, registriesFuture: CompletableFuture<RegistryWrapper.WrapperLookup?>? ->
+            en_us(output, "en_us", registriesFuture)
+        }
     }
 }
