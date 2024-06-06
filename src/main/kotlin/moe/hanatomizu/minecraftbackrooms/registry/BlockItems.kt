@@ -15,13 +15,13 @@
 */
 package moe.hanatomizu.minecraftbackrooms.registry
 
+import moe.hanatomizu.minecraftbackrooms.NAMESPACE
 import moe.hanatomizu.minecraftbackrooms.objects.ModBlockItems
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
 import net.minecraft.util.Identifier
 
 object BlockItems {
-    private const val NAMESPACE = "backrooms"
     private fun register(itemPath: String, item: net.minecraft.item.Item): Unit{
         Registry.register(Registries.ITEM, Identifier(NAMESPACE, itemPath), item)
     }

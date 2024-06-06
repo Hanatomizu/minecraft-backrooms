@@ -18,16 +18,16 @@ package moe.hanatomizu.minecraftbackrooms
 
 import net.fabricmc.api.ModInitializer
 
+const val NAMESPACE = "backrooms"
+
 class MinecraftBackrooms : ModInitializer {
-
-    private val NAMESPACE = "backrooms"
-
     override fun onInitialize (){
         // Register Item Groups
         moe.hanatomizu.minecraftbackrooms.registry.Groups.init()
-
         // Register blocks and block items
         moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
         moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
+        // Register Dimensions
+        // TODO("Implement dimensions")
     }
 }

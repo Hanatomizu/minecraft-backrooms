@@ -16,6 +16,7 @@
 
 package moe.hanatomizu.minecraftbackrooms.registry
 
+import moe.hanatomizu.minecraftbackrooms.NAMESPACE
 import moe.hanatomizu.minecraftbackrooms.objects.ModBlocks
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
@@ -23,7 +24,6 @@ import net.minecraft.util.Identifier
 
 object Blocks {
 
-    private const val NAMESPACE = "backrooms"
     private fun register(blockPath: String, block: net.minecraft.block.Block): Unit {
         Registry.register(Registries.BLOCK, Identifier(NAMESPACE, blockPath), block)
     }
