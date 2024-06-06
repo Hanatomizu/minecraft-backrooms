@@ -13,13 +13,8 @@
 * See the License for the specific language governing permissions and
 * limitations under the License.
 */
+package moe.hanatomizu.minecraftbackrooms.blocks
 
-package moe.hanatomizu.minecraftbackrooms.objects
+import net.minecraft.block.Block
 
-import net.minecraft.item.BlockItem
-import net.minecraft.item.Item
-
-object ModBlockItems {
-    val ENTRANCE_FLOOR_ITEM: BlockItem = BlockItem(ModBlocks.ENTRANCE_FLOOR, Item.Settings())
-    val ENTRANCE_WALL_ITEM: BlockItem = BlockItem(ModBlocks.ENTRANCE_WALL, Item.Settings())
-}
+class EntranceBlock(settings: Settings) : Block(settings)

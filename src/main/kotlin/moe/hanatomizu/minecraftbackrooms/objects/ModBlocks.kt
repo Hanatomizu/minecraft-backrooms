@@ -16,10 +16,12 @@
 
 package moe.hanatomizu.minecraftbackrooms.objects
 
-import net.fabricmc.fabric.api.`object`.builder.v1.block.FabricBlockSettings
+import moe.hanatomizu.minecraftbackrooms.blocks.EntranceBlock
+import moe.hanatomizu.minecraftbackrooms.blocks.EntranceWall
+import net.minecraft.block.AbstractBlock
 import net.minecraft.block.Block
 
 object ModBlocks {
-    val ENTRANCE_FLOOR: Block = Block(FabricBlockSettings.create())
-    val ENTRANCE_WALL: Block = Block(FabricBlockSettings.create())
+    val ENTRANCE_FLOOR: Block = EntranceBlock(AbstractBlock.Settings.create())
+    val ENTRANCE_WALL: Block = EntranceWall(AbstractBlock.Settings.create())
 }
