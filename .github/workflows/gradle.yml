@@ -9,9 +9,15 @@ name: Gradle Project Test
 
 on:
   push:
-    branches: [ "master", "dev" ]
+    branches: 
+      - main
+      - '**-stable'
+      - '**-test'
   pull_request:
-    branches: [ "master" ]
+    branches: 
+      - main
+      - '**-stable'
+      - '**-test'
 
 jobs:
   build:
