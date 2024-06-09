@@ -8,7 +8,7 @@ This is backrooms in Minecraft
 
 Dependencies:
 
-- Java Development Kit 17
+- Java Development Kit 21
 
 <br>
 
