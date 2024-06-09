@@ -16,7 +16,7 @@
 
 package moe.hanatomizu.minecraftbackrooms.registry
 
-import moe.hanatomizu.minecraftbackrooms.NAMESPACE
+import moe.hanatomizu.minecraftbackrooms.MinecraftBackrooms.Companion.NAMESPACE
 import moe.hanatomizu.minecraftbackrooms.objects.ModBlocks
 import net.minecraft.registry.Registries
 import net.minecraft.registry.Registry
