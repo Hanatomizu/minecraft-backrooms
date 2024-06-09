@@ -36,4 +36,3 @@ class MinecraftBackrooms : ModInitializer {
         moe.hanatomizu.minecraftbackrooms.world.Dimensions.init()
     }
 }
-
