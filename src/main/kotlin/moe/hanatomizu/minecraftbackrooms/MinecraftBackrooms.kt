@@ -17,17 +17,23 @@
 package moe.hanatomizu.minecraftbackrooms
 
 import net.fabricmc.api.ModInitializer
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 
 class MinecraftBackrooms : ModInitializer {
-
-    private val NAMESPACE = "backrooms"
-
+    companion object {
+        const val NAMESPACE: String = "backrooms"
+        val LOGGER: Logger = LoggerFactory.getLogger(NAMESPACE)
+    }
     override fun onInitialize (){
+        LOGGER.info("Start loading minecraft-backrooms!")
         // Register Item Groups
         moe.hanatomizu.minecraftbackrooms.registry.Groups.init()
 
         // Register blocks and block items
         moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
         moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
+        // Register Dimensions
+        // TODO("Implement dimensions")
     }
 }

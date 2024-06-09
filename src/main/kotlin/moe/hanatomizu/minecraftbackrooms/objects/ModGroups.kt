@@ -15,13 +15,12 @@
 */
 package moe.hanatomizu.minecraftbackrooms.objects
 
+import moe.hanatomizu.minecraftbackrooms.MinecraftBackrooms.Companion.NAMESPACE
 import net.minecraft.item.ItemGroup
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.util.Identifier
 
 object ModGroups {
-    private val NAMESPACE = "backrooms"
-
     val ENTRANCE_BLOCKS: RegistryKey<ItemGroup> = RegistryKey.of(RegistryKeys.ITEM_GROUP, Identifier(NAMESPACE, "entrance_blocks"))
 }
