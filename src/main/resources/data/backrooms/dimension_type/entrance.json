@@ -1,0 +1,19 @@
+{
+	"ultrawarm": false,
+	"natural": false,
+	"coordinate_scale": 8,
+	"ambient_light": 0.1,
+	"has_skylight": true,
+	"has_ceiling": true,
+	"infiniburn": "#minecraft:infiniburn_overworld",
+	"logical_height" : 64,
+	"has_raids" : false,
+	"respawn_anchor_works": false,
+	"bed_works" : true,
+	"piglin_safe" : false,
+	"height": 64,
+	"min_y": 0,
+	"effects": "backrooms:entrance",
+	"monster_spawn_block_light_limit": 15,
+	"monster_spawn_light_level": 15
+}

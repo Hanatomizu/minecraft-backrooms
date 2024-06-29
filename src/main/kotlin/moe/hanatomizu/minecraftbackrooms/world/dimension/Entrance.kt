@@ -16,9 +16,11 @@
 package moe.hanatomizu.minecraftbackrooms.world.dimension
 
 import com.mojang.brigadier.CommandDispatcher
-import moe.hanatomizu.minecraftbackrooms.NAMESPACE
-import moe.hanatomizu.minecraftbackrooms.world.chunks.EntranceChunkGenerator
+import moe.hanatomizu.minecraftbackrooms.MinecraftBackrooms.Companion.NAMESPACE
 import moe.hanatomizu.minecraftbackrooms.world.Dimensions.swapTargeted
+import moe.hanatomizu.minecraftbackrooms.world.Dimensions.testDesync
+import moe.hanatomizu.minecraftbackrooms.world.Dimensions.testEntityTeleport
+import moe.hanatomizu.minecraftbackrooms.world.chunks.EntranceChunkGenerator
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback
 import net.minecraft.command.CommandRegistryAccess
 import net.minecraft.registry.Registries
@@ -26,39 +28,36 @@ import net.minecraft.registry.Registry
 import net.minecraft.registry.RegistryKey
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.server.command.CommandManager
-import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.server.command.CommandManager.literal
+import net.minecraft.server.command.ServerCommandSource
 import net.minecraft.util.Identifier
 import net.minecraft.world.World
 import net.minecraft.world.dimension.DimensionOptions
 
-class Entrance {
+object Entrance {
+    private val ENTRANCE_DIMENSION_KEY: RegistryKey<DimensionOptions> = RegistryKey.of(RegistryKeys.DIMENSION, Identifier(NAMESPACE, "entrance"))
+    private var ENTRANCE_WORLD_KEY: RegistryKey<World> = RegistryKey.of(RegistryKeys.WORLD, ENTRANCE_DIMENSION_KEY.value)
 
+    fun commandRegistration(): Unit {
+        ENTRANCE_WORLD_KEY = RegistryKey.of(RegistryKeys.WORLD, Identifier(NAMESPACE, "entrance"))
+        CommandRegistrationCallback.EVENT.register { dispatcher: CommandDispatcher<ServerCommandSource>,
+                                                     _: CommandRegistryAccess,
+                                                     environment: CommandManager.RegistrationEnvironment ->
+            dispatcher.register(literal("entrance").executes { swapTargeted(it, ENTRANCE_WORLD_KEY) })
 
-    private object CommandRegistration {
-        private val ENTRANCE_DIMENSION_KEY: RegistryKey<DimensionOptions> = RegistryKey.of(RegistryKeys.DIMENSION, Identifier(NAMESPACE, "entrance"))
-        private var ENTRANCE_WORLD_KEY: RegistryKey<World> = RegistryKey.of(RegistryKeys.WORLD, ENTRANCE_DIMENSION_KEY.value)
-
-        fun commandRegistration(): Unit {
-            ENTRANCE_WORLD_KEY = RegistryKey.of(RegistryKeys.WORLD, Identifier(NAMESPACE, "entrance"))
-            CommandRegistrationCallback.EVENT.register { dispatcher: CommandDispatcher<ServerCommandSource>, _: CommandRegistryAccess, _: CommandManager.RegistrationEnvironment ->
-                dispatcher.register(literal("entrance").executes { swapTargeted(it, ENTRANCE_WORLD_KEY) })
+            if (environment != CommandManager.RegistrationEnvironment.INTEGRATED) {
+                dispatcher.register(literal("entrance_desync").executes { testDesync(it) })
             }
+
+            dispatcher.register(literal("entrance_entity").executes { testEntityTeleport(it) })
         }
     }
 
-    companion object {
-        fun init(): Unit {
-            Registry.register(
-                Registries.CHUNK_GENERATOR,
-                Identifier(NAMESPACE, "entrance"),
-                EntranceChunkGenerator.CODEC
-            )
-        }
-        fun commandRegistration(): Unit{
-            CommandRegistration.commandRegistration()
-        }
+    fun init(): Unit {
+        Registry.register(
+            Registries.CHUNK_GENERATOR,
+            Identifier(NAMESPACE, "entrance"),
+            EntranceChunkGenerator.CODEC
+        )
     }
-
-
 }

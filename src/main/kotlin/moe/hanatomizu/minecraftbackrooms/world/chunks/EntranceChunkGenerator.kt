@@ -15,11 +15,8 @@
 */
 package moe.hanatomizu.minecraftbackrooms.world.chunks
 
-import com.mojang.datafixers.kinds.App
 import com.mojang.serialization.Codec
 import com.mojang.serialization.codecs.RecordCodecBuilder
-import net.fabricmc.fabric.impl.biome.TheEndBiomeData.biomeRegistry
-import net.minecraft.block.BlockState
 import net.minecraft.registry.RegistryEntryLookup
 import net.minecraft.registry.RegistryKeys
 import net.minecraft.registry.RegistryOps
@@ -64,7 +61,7 @@ class EntranceChunkGenerator(biomeRegistry: RegistryEntryLookup<Biome?>) : Chunk
         chunk: Chunk?,
         carverStep: GenerationStep.Carver?
     ) {
-        // No cave
+
     }
 
     override fun buildSurface(
