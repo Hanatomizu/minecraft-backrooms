@@ -34,7 +34,11 @@ class MinecraftBackrooms : ModInitializer {
         LOGGER.info("Initiating backrooms blocks")
         moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
         moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
+        // Register Biomes
+        LOGGER.info("Initiating backrooms biomes")
+
         // Register Dimensions
+        TODO("Finish biomes")
         LOGGER.info("Initiating backrooms dimensions")
         moe.hanatomizu.minecraftbackrooms.world.Dimensions.init()
     }
