@@ -30,5 +30,11 @@ class DataGenerator : DataGeneratorEntrypoint {
         pack.addProvider { output: FabricDataOutput? -> ModelGenerator(output) }
         // English Language provider
         pack.addProvider { output: FabricDataOutput? -> en_us(output) }
+        // Biomes
+        TODO("Not implemented yet")
+        // pack.addProvider { output: FabricDataOutput?,
+        //                    registriesFuture: CompletableFuture<RegistryWrapper.WrapperLookup>? ->
+        //     EntranceGenProvider(output, registriesFuture)
+        // }
     }
 }
