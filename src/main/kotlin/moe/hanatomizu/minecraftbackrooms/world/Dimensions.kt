@@ -18,11 +18,14 @@ package moe.hanatomizu.minecraftbackrooms.world
 import com.mojang.brigadier.context.CommandContext
 import com.mojang.brigadier.exceptions.CommandSyntaxException
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType
+import moe.hanatomizu.minecraftbackrooms.MinecraftBackrooms.Companion.LOGGER
 import moe.hanatomizu.minecraftbackrooms.world.dimension.Entrance
 import net.fabricmc.fabric.api.dimension.v1.FabricDimensions
 import net.minecraft.block.Blocks
+import net.minecraft.entity.Entity
 import net.minecraft.registry.RegistryKey
 import net.minecraft.server.command.ServerCommandSource
+import net.minecraft.server.network.ServerPlayerEntity
 import net.minecraft.server.world.ServerWorld
 import net.minecraft.text.Text
 import net.minecraft.util.math.BlockPos
@@ -35,17 +38,18 @@ object Dimensions {
     private val FAILED_EXCEPTION: SimpleCommandExceptionType = SimpleCommandExceptionType(Text.literal("Teleportation Failed"))
 
     fun init(): Unit {
+        LOGGER.info("Loading Dimensions initiation")
         Entrance.init()
         // if the gametest server does not support custom worlds
-        if (System.getProperty("fabric-api.gametest") != null) {
-            return
-        }
+        // if (System.getProperty("fabric-api.gametest") != null) {
+        //     return
+        // }
         Entrance.commandRegistration()
     }
 
     @Throws(CommandSyntaxException::class)
     fun swapTargeted(context: CommandContext<ServerCommandSource>, dimensionRegistryKey: RegistryKey<World>): Int {
-        val player = context.source.player
+        val player: ServerPlayerEntity? = context.source.player
 
         if (player == null) {
             context.source.sendFeedback({ Text.literal("You must be a player to execute this command.") }, false)
@@ -63,10 +67,8 @@ object Dimensions {
                 throw FAILED_EXCEPTION.create()
             }
 
-            if (modWorld != null) {
-                modWorld.setBlockState(BlockPos(0, 100, 0), Blocks.DIAMOND_BLOCK.defaultState)
-                modWorld.setBlockState(BlockPos(0, 101, 0), Blocks.TORCH.defaultState)
-            }
+            modWorld?.setBlockState(BlockPos(0, 100, 0), Blocks.DIAMOND_BLOCK.defaultState)
+            modWorld?.setBlockState(BlockPos(0, 101, 0), Blocks.TORCH.defaultState)
         } else {
             val target = TeleportTarget(
                 Vec3d(0.0, 100.0, 0.0), Vec3d.ZERO,
@@ -74,6 +76,52 @@ object Dimensions {
             )
             FabricDimensions.teleport(player, getWorld(context, World.OVERWORLD), target)
         }
+
+        return 1
+    }
+
+    fun testDesync(context: CommandContext<ServerCommandSource>): Int {
+        val player: ServerPlayerEntity? = context.source.player
+
+        if (player == null) {
+            context.source.sendFeedback({Text.literal("You must be a player to execute this command")}, false)
+        }
+
+        val target: TeleportTarget? = player?.let {
+            TeleportTarget(player.pos?.add(5.0, 0.0, 0.0),
+                player.velocity,
+                it.yaw,
+                player.pitch
+            )
+        }
+
+        FabricDimensions.teleport(player, player?.world as ServerWorld?, target)
+
+        return 1
+    }
+
+    fun testEntityTeleport(context: CommandContext<ServerCommandSource>): Int {
+        val player: ServerPlayerEntity? = context.source.player
+
+        if (player == null) {
+            context.source.sendFeedback({Text.literal("You must be a player to execute this command")}, false)
+        }
+
+        val entity: Entity? = player?.world
+            ?.getOtherEntities(player, player.boundingBox.expand(100.0, 100.0, 100.0))
+            ?.stream()
+            ?.findFirst()
+            ?.orElse(null)
+
+        if (entity == null) {
+            context.source.sendFeedback({Text.literal("No entities found")}, false)
+        }
+
+        val target: TeleportTarget? = player?.let {
+            TeleportTarget(player.pos, player.velocity, player.yaw, player.pitch)
+        }
+
+        FabricDimensions.teleport(entity, entity?.world as ServerWorld, target)
 
         return 1
     }
