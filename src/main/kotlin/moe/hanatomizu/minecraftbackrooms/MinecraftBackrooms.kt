@@ -28,11 +28,14 @@ class MinecraftBackrooms : ModInitializer {
     override fun onInitialize (){
         LOGGER.info("Start loading minecraft-backrooms!")
         // Register Item Groups
+        LOGGER.info("Initiating backrooms item groups.")
         moe.hanatomizu.minecraftbackrooms.registry.Groups.init()
         // Register blocks and block items
+        LOGGER.info("Initiating backrooms blocks")
         moe.hanatomizu.minecraftbackrooms.registry.Blocks.init()
         moe.hanatomizu.minecraftbackrooms.registry.BlockItems.init()
         // Register Dimensions
+        LOGGER.info("Initiating backrooms dimensions")
         moe.hanatomizu.minecraftbackrooms.world.Dimensions.init()
     }
 }
